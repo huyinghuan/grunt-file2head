@@ -15,7 +15,8 @@ module.exports = function(grunt) {
     klyg_file2head: {
       options: {
         priority: ['lib'],
-        tag: "head"
+        tag: "head",
+        root: "/js"
       },
       js: {
         "src": ['test/*', 'test/*/*'],
