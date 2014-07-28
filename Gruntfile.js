@@ -14,19 +14,22 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     klyg_file2head: {
       options: {
-        priority: ['lib'],
         tag: "head",
-        root: "/js"
+        root: "/",
+        delDir: 'test',
+        dist: "test/index.html"
+      },
+      lib: {
+         "src": ["test/js/lib/*.js"]
       },
       js: {
-        "src": ['test/*', 'test/*/*'],
+        "src": ['test/*.js', 'test/*/*.js'],
         "dist": "test/index.html",
-        tag: 'body'
+        'tag': 'body'
       },
       css:{
-        "src": ['test/*'],
-        "dist": "index.html",
-        tag: 'head'
+        "src": ['test/*.css', 'test/*/*.css'],
+        'tag': 'head'
       }
     }
   });
