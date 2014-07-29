@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         'tag': 'head'
       },
       clear: {
-        "src": ['test/*'],
+        "src": ['test/*.html'],
         "dist":["head", "@js", "$input"]
       }
     }

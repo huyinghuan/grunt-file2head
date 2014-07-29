@@ -28,41 +28,41 @@ see ```Gruntfile.js``` and ```test``` directory
 
 ### Grunt-config
 
-```json
+```js
   grunt.initConfig({
     // Configuration to be run (and then tested).
-    klyg_file2head: {
+    "klyg_file2head": {
       options: {
         /**
         * The html tag which the .js or .css will be added.
         * String. Default: "head"
         * Support CSS seletor.(in the plugin use document.querySelector(tag) choose the dist tag)
         **/
-        tag: "head",
+        "tag": "head",
         /*
         * the root url
         * String. Default: "/"
         * can set like:  http://localhost/xxx/xx 
         * the result is: http://localhost/xxx/xx/xx.js
         */
-        root: "/",
+        "root": "/",
         /*
         * the path will be replace withe space
         * String or Boolean. Default: false
         * if it is a String 'xxx' and the aa.js in directory xxx/hello
         * result:  [root]/hello/aa.js
         */
-        delDir: 'test',
+        "delDir": 'test',
         /*
         *  the html file path which the .js or .css will be added.
         *  String or Boolean. Default: false
         */
-        dist: "index.html"
+        "dist": "index.html"
       },
       /*
       *task
       */
-      lib: { 
+      "lib": { 
          "src": ["test/js/lib/*.js"],
          "dist": "test/index.html", //if it is undefine or false will use options.dist
          "tag":"head", //if it is undefine or false will use options.tag
@@ -72,7 +72,7 @@ see ```Gruntfile.js``` and ```test``` directory
       /*
       *task
       */
-      js: {
+      "js": {
         "src": ['test/*.js', 'test/*/*.js'],
         "dist": "test/index.html",
         'tag': 'body',
@@ -81,9 +81,9 @@ see ```Gruntfile.js``` and ```test``` directory
       * How to clear html tag?
       * set the task name be 'clear' and tell grunt which files need remove tag by "src" property
       */
-      clear:{
-        src: ["index.html", "*.html"],
-        dist:["head", "@js", "$input"]
+      "clear":{
+        "src": ["index.html", "*.html"],
+        "dist":["head", "@js", "$input"]
       }
     }
   });
@@ -91,3 +91,13 @@ see ```Gruntfile.js``` and ```test``` directory
 
 
 ##Historty
+
+### v0.0.3
+Temp version
+
+1. Fix a bug.
+  when there are dirs in "src" can't resolve
+
+2. Add a function.
+  remove the html tags from html file
+

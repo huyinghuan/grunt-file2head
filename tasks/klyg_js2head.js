@@ -53,8 +53,10 @@ utils.createElement = function(doc, path, target){
   return null;
 };
 
-utils.doClear = function(task,grunt){
-
+utils.doClear = function(grunt){
+  this.files.forEach(function(r){
+    console.log(r.src)
+  })
 };
 
 module.exports = function(grunt) {
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
     //this.target
     var target = this.target;
     if(target === 'clear' || target.indexOf('clear-') === 0){
-      utils.doClear(this, grunt);
+      utils.doClear.call(this, grunt);
       return;
     }
 
