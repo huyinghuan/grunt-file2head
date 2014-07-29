@@ -1,7 +1,7 @@
 {
   "name": "klyg-file2head",
   "description": "find js file and add to html tag head",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/huyinghuan/grunt-file2head",
   "author": {
     "name": "huyinghuan",

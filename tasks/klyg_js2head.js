@@ -98,6 +98,11 @@ module.exports = function(grunt) {
       //3.获取将被插入 的元素
       var beInsertTag = doc.querySelector(tag);
       t.src.filter(function(uri){
+        //如果是文件夹则跳过
+        if(grunt.file.isFile()){
+          return;
+        }
+
         //替换掉不需要的文件夹前缀
         if(options.delDir !== false){
           uri = uri.replace(delDir, "");

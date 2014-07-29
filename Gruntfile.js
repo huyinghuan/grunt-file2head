@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         'tag': 'head'
       },
       css:{
-        "src": ['test/*.css', 'test/*/*.css'],
+        "src": ['test/*', 'test/*/*'],
         'tag': 'head'
       }
     }
