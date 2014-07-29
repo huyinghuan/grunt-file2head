@@ -30,10 +30,14 @@ module.exports = function(grunt) {
       css:{
         "src": ['test/*', 'test/*/*'],
         'tag': 'head'
+      },
+      clear: {
+        "src": ['test/*'],
+        "dist":["head", "@js", "$input"]
       }
     }
   });
   grunt.loadTasks('tasks');
-  grunt.registerTask('default', ['klyg_file2head']);
+  grunt.registerTask('default', ['klyg_file2head:clear']);
 
 };
