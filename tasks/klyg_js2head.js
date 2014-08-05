@@ -37,8 +37,8 @@ utils.removeAllExists = function(doc, tag, target){
     var node = hasAppended[i];
     node.parentNode.removeChild(node)
   }
-  var main  = doc.querySelector(tag)
-  main.innerHTML = main.innerHTML.replace(/(\n){2,}/g, '')
+  var main  = doc.querySelector(tag);
+  main.innerHTML = main.innerHTML.replace(/((\n){1,})|(\r){1,}/g, '\n')
 };
 
 
@@ -63,10 +63,10 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('klyg_file2head', 'find js file and add to tag header', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      delDir: false,
+      replaceDirWithBlank: false,
       dist: false,
       tag: "head",
-      root: '/'
+      uri: '/'
     });
     //本次目标
     //this.target
@@ -87,11 +87,11 @@ module.exports = function(grunt) {
       //需要文件将放入的标签
       var tag = t.tag || options.tag;
       //应用的根目录
-      var root = t.root || options.root;
+      var uri = t.uri || options.uri;
       //目标HTML文件
       var dist = t.dist;
       //需要替换为空的文件夹
-      var  delDir = t.delDir || options.delDir;
+      var  replaceDirWithBlank = t.replaceDirWithBlank || options.replaceDirWithBlank;
 
       var doc = null;
       //判断目标文件是否存在
@@ -118,20 +118,20 @@ module.exports = function(grunt) {
         return
       }
 
-      t.src.filter(function(uri){
+      t.src.filter(function(filePath){
         //如果是文件夹则跳过
-        if(grunt.file.isDir(uri)){
+        if(grunt.file.isDir(filePath)){
           return;
         }
         //替换掉不需要的文件夹前缀
-        if(options.delDir !== false){
-          uri = uri.replace(delDir, "");
+        if(options.replaceDirWithBlank !== false){
+          filePath = filePath.replace(replaceDirWithBlank, "");
         }
-        var src = _url.resolve(root, uri);
+        var src = _url.resolve(uri, filePath);
         //创建dom节点 并插入节点
         var dom = utils.createElement(doc, src, target);
         if(!dom){
-          console.warn('UnkownFile:', uri)
+          console.warn('UnkownFile:', filePath);
           return
         }
         beInsertTag.appendChild(dom);

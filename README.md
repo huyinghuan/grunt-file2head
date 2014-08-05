@@ -40,19 +40,19 @@ see ```Gruntfile.js``` and ```test``` directory
         **/
         "tag": "head",
         /*
-        * the root url
+        * the root uri
         * String. Default: "/"
         * can set like:  http://localhost/xxx/xx 
         * the result is: http://localhost/xxx/xx/xx.js
         */
-        "root": "/",
+        "uri": "/",
         /*
         * the path will be replace withe space
         * String or Boolean. Default: false
         * if it is a String 'xxx' and the aa.js in directory xxx/hello
         * result:  [root]/hello/aa.js
         */
-        "delDir": 'test',
+        "replaceDirWithBlank": 'test',
         /*
         *  the html file path which the .js or .css will be added.
         *  String or Boolean. Default: false
@@ -66,8 +66,8 @@ see ```Gruntfile.js``` and ```test``` directory
          "src": ["test/js/lib/*.js"],
          "dist": "test/index.html", //if it is undefine or false will use options.dist
          "tag":"head", //if it is undefine or false will use options.tag
-         "root": "http://localhost:3000", //if it is undefine or false will use options.root
-         "delDir": false, //if it is undefine or false will use options.delDir
+         "uri": "http://localhost:3000", //if it is undefine or false will use options.root
+         "replaceDirWithBlank": false, //if it is undefine or false will use options.replaceDirWithBlank
       },
       /*
       *task

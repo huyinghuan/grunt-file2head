@@ -15,8 +15,8 @@ module.exports = function(grunt) {
     klyg_file2head: {
       options: {
         tag: "head",
-        root: "/",
-        delDir: 'test',
+        uri: "/",
+        replaceDirWithBlank: 'test',
         dist: "test/index.html"
       },
       lib: {
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       js: {
         "src": ['test/*.js', 'test/*/*.js'],
         "dist": "test/index.html",
-        'tag': 'head'
+        'tag': 'body'
       },
       css:{
         "src": ['test/*', 'test/*/*'],
@@ -38,6 +38,6 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadTasks('tasks');
-  grunt.registerTask('default', ['klyg_file2head:clear']);
+  grunt.registerTask('default', ['klyg_file2head:js']);
 
 };
