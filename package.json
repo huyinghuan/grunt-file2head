@@ -27,7 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "jsdom": ""
+    "jsdom": "v0.11.1"
   },
   "devDependencies": {
     "grunt": "~0.4.5"

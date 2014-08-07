@@ -27,8 +27,14 @@ module.exports = function(grunt) {
         "dist": "test/index.html",
         'tag': 'body'
       },
+      rootjs: {
+        'src': ['*.js', '*/*.js'],
+        "dist": "test/index.html",
+        'tag': 'body',
+        'fileRootDir': 'test'
+      },
       css:{
-        "src": ['test/*', 'test/*/*'],
+        "src": ['*', '*/*'],
         'tag': 'head'
       },
       clear: {
@@ -38,6 +44,6 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadTasks('tasks');
-  grunt.registerTask('default', ['klyg_file2head:js']);
+  grunt.registerTask('default', ['klyg_file2head:rootjs']);
 
 };

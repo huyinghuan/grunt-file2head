@@ -63,6 +63,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('klyg_file2head', 'find js file and add to tag header', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
+      fileRootDir: false,
       replaceDirWithBlank: false,
       dist: false,
       tag: "head",
@@ -82,6 +83,8 @@ module.exports = function(grunt) {
       var defDoc = _jsdom(grunt.file.read(options.dist));
     }
 
+    var tfiles = grunt.file.expand('test/js/*.js');
+
     //遍历配置中 每个任务目标的 src字段。
     this.files.forEach(function(t){ // t 每个任务对象
       //需要文件将放入的标签
@@ -92,6 +95,13 @@ module.exports = function(grunt) {
       var dist = t.dist;
       //需要替换为空的文件夹
       var  replaceDirWithBlank = t.replaceDirWithBlank || options.replaceDirWithBlank;
+
+      var fileRootDir = false;
+      //扫描文件的根目录设置
+      if(t.fileRootDir !== false){
+        fileRootDir = t.fileRootDir || options.fileRootDir;
+        //if(fileRootDir)
+      }
 
       var doc = null;
       //判断目标文件是否存在
@@ -117,7 +127,7 @@ module.exports = function(grunt) {
         console.error("task tag is not exists");
         return
       }
-
+      console.log(t);
       t.src.filter(function(filePath){
         //如果是文件夹则跳过
         if(grunt.file.isDir(filePath)){
