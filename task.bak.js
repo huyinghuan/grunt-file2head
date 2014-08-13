@@ -153,3 +153,23 @@ module.exports = function(grunt) {
   });
 
 };
+//{ nameArgs: 'klyg_file2head:js',
+//  name: 'klyg_file2head',
+//  args: [],
+//  flags: {},
+//  async: [Function],
+//    errorCount: [Getter],
+//  requires: [Function],
+//  requiresConfig: [Function],
+//  options: [Function],
+//  target: 'js',
+//  data:
+//  { src: [ 'test/*.js', 'test/*/*.js' ],
+//    dist: 'test/index.html',
+//    tag: 'body' },
+//  files:
+//    [ { src: [Getter],
+//      dist: 'test/index.html',
+//      tag: 'body',
+//      orig: [Object] } ],
+//      filesSrc: [Getter] }

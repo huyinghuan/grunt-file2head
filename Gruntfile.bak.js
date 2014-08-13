@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         dist: "test/index.html"
       },
       lib: {
-         "src": ["test/js/lib/*.js"]
+        "src": ["test/js/lib/*.js"]
       },
       js: {
         "src": ['test/*.js', 'test/*/*.js'],
@@ -47,3 +47,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['klyg_file2head:rootjs']);
 
 };
+/**
+ * Created by ec on 14-8-8.
+ */

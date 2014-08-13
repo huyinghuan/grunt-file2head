@@ -27,7 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "jsdom": "v0.11.1"
+    "cheerio": "v0.17.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5"
