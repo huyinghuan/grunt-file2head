@@ -9,19 +9,20 @@ Utils.clear = (task, grunt)->
 Utils.createHtml = (content)->
   _cheerio.load(content)
 
-Utils.createScript = (src, type)->
-  "<script src='#{src}' grunt-type='type'></script>"
-
-Utils.createElement = (path)->
+###
+  @path: 源文件的路径。
+  @target： 当前任务的名称，便于区别处理不同任务。
+###
+Utils.createElement = (path, target)->
   ext = _path.extname(path).replace(".", "");
   dom = ''
   switch ext
     when 'js'
-      dom = "<script src='#{path}' grunt-type='#{ext}'></script>"
+      dom = "<script src='#{path}' grunt-type='#{target}'></script>"
     when 'css'
-      "<link rel='stylesheet' href='#{path}' grunt-type='#{ext}'/>"
+      "<link rel='stylesheet' href='#{path}' grunt-type='#{target}'/>"
 
-Utils.getFilePath = (root, dist, distType)->
+Utils.getFilePath = (root, dist)->
   #装成数组统一处理
   dist = [].concat dist
   #如果根目录不是字符串

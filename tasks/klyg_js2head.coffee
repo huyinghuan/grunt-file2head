@@ -32,7 +32,7 @@ module.exports = (grunt)->
 
         #获取目标文件
         dist = data.dist or options.dist
-        fileRootDir = data.fileRootDir or options.fileRootDir
+        fileRootDir = if data.fileRootDir is false then '' else (data.fileRootDir or options.fileRootDir)
         #如果目标文件不是数组或者字符串。则报错返回
         distType = kindOf(dist)
         return grunt.log.error 'dist fields is illegal' if (distType isnt 'string') and (distType isnt  'array')
@@ -58,5 +58,11 @@ module.exports = (grunt)->
         src = [].concat src
         legalSrc = []
         legalSrc = legalSrc.concat(grunt.file.expand(srcFilePath)) for srcFilePath in src
+
+        #资源css，js
+        assets = []
+
+        assets.push _utils.createElement path for path in legalSrc
+
 
 
