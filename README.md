@@ -24,7 +24,14 @@ or package.json
 ```shell
   cd klyg-file2head
 ```
-see ```Gruntfile.js``` and ```test``` directory
+see ```Gruntfile.coffee``` and ```app``` directory and then
+
+```shell
+#run
+grunt
+```
+watch the change of index.html after ```grunt```
+
 
 ### Grunt-config
 
@@ -45,19 +52,26 @@ see ```Gruntfile.js``` and ```test``` directory
         * can set like:  http://localhost/xxx/xx 
         * the result is: http://localhost/xxx/xx/xx.js
         */
-        "uri": "/",
-        /*
-        * the path will be replace withe space
-        * String or Boolean. Default: false
-        * if it is a String 'xxx' and the aa.js in directory xxx/hello
-        * result:  [root]/hello/aa.js
-        */
-        "replaceDirWithBlank": 'test',
+        "uri": "/"
         /*
         *  the html file path which the .js or .css will be added.
         *  String or Boolean. Default: false
         */
-        "dist": "index.html"
+        "dist": "index.html",
+        /*
+        * set the source file directory that need be scaled
+        * String or Boolean. Default: false
+        * eg.   scaleSourceFileDir: 'app', src:[js/*.js]
+        * the file *.js in app/js  will be found
+        */
+        "scanSourceFileDir": false,
+         /*
+          * set the dist file directory that need be scaled
+          * String or Boolean. Default: false
+          * eg.   scanDistFileDir: 'app', dist: 'index.html'
+          * the file app/index.html  will be as dist file
+          */
+         "scanDistFileDir": false,
       },
       /*
       *task
@@ -67,7 +81,8 @@ see ```Gruntfile.js``` and ```test``` directory
          "dist": "test/index.html", //if it is undefine or false will use options.dist
          "tag":"head", //if it is undefine or false will use options.tag
          "uri": "http://localhost:3000", //if it is undefine or false will use options.root
-         "replaceDirWithBlank": false, //if it is undefine or false will use options.replaceDirWithBlank
+         "scanSourceFileDir": false, // it will replace options.scanSourceFileDir
+         "scanDistFileDir": false, //it will replace options.scanDistFileDir
       },
       /*
       *task
@@ -91,6 +106,11 @@ see ```Gruntfile.js``` and ```test``` directory
 
 
 ##Historty
+
+### v0.0.4
+1. replace jsdom with cheerio
+2. rewrite all file with coffeescript
+3. undo:  clear task
 
 ### v0.0.3
 Temp version

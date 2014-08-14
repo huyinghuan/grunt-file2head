@@ -12,17 +12,17 @@ module.exports = (grunt)->
       pkg: grunt.file.readJSON "package.json"
       klyg_file2head:
         options:
-          fileRootDir: false
+          scanSourceFileDir: 'app'
+          scanDistFileDir: 'app'
           tag: "head"
-          uri: "/"
-          replaceDirWithBlank: 'test'
-          dist: "test/index.html"
+          uri: false
+          dist: "index.html"
         js:
-          "src": ['test/*.js', 'test/*/*.js']
-          "dist": "test/index.html"
+          "src": ['*.js', '*/*.js']
           'tag': 'body'
+        css:
+          "src": ['*/*.css']
   )
   grunt.loadTasks 'tasks'
-  grunt.loadTasks './test'
-  grunt.registerTask 'default', ['klyg_file2head:js']
+  grunt.registerTask 'default', ['klyg_file2head:js', 'klyg_file2head:css']
 

@@ -1,6 +1,6 @@
 _path = require 'path'
 _cheerio = require 'cheerio'
-
+_url = require 'url'
 Utils = module.exports = {}
 
 Utils.clear = (task, grunt)->
@@ -13,8 +13,12 @@ Utils.createHtml = (content)->
   @path: 源文件的路径。
   @target： 当前任务的名称，便于区别处理不同任务。
 ###
-Utils.createElement = (path, target)->
+Utils.createElement = (uri, path, target)->
+  uri = '' if typeof uri isnt 'string'
+  uri += '/' if uri.lastIndexOf('/') isnt (uri.length - 1)
   ext = _path.extname(path).replace(".", "");
+  path = _url.resolve(uri, path);
+  console.log(path)
   dom = ''
   switch ext
     when 'js'
