@@ -1,21 +1,24 @@
 _utils = require './lib/utils'
 _path = require 'path'
+_Clear = require './lib/clear'
 module.exports = (grunt)->
+
   grunt.registerMultiTask 'klyg_file2head',
       'find js file and add to tag header',
       ()->
-        options = this.options(
+        defaultOptions =
           scanSourceFileDir: false,
           scanDistFileDir: false,
           dist: false,
           tag: "head",
           uri: '/'
-        )
+
+        options = this.options defaultOptions
+
         #目标任务
         taskName = @target
-
         #是否是清除任务 #后续完善
-        #return _until.clear this, grunt if taskName is 'clear' or taskName.indexOf 'clear' is 0
+        return new _Clear grunt, @data, defaultOptions if taskName is 'clear' or taskName.indexOf 'clear-' is 0
 
         kindOf = grunt.util.kindOf
         data = @data

@@ -18,10 +18,12 @@ module.exports = (grunt)->
           uri: false
           dist: "index.html"
         js:
-          "src": ['*.js', '*/*.js']
-          'tag': 'body'
+          src: ['*.js', '*/*.js']
+          tag: 'body'
         css:
-          "src": ['*/*.css']
+          src: ['*/*.css']
+        "clear-js":
+          clear: true
   )
   grunt.loadTasks 'tasks'
   grunt.registerTask 'default', ['klyg_file2head:js', 'klyg_file2head:css']

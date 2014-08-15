@@ -103,7 +103,11 @@ watch the change of index.html after ```grunt```
     }
   });
 ```
+##LICENSE
 
+MIT
+
+see ```grunt-file2head/LICENSE-MIT```
 
 ##Historty
 
