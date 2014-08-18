@@ -94,11 +94,11 @@ watch the change of index.html after ```grunt```
       },
       /**
       * How to clear html tag?
-      * set the task name be 'clear' and tell grunt which files need remove tag by "src" property
+      * 1. set the task name be 'clear' or 'clear-xxx'
+      * 2. set tasks be array that contain task name that you want clear 
       */
       "clear":{
-        "src": ["index.html", "*.html"],
-        "dist":["head", "@js", "$input"]
+        "tasks": ["js", "lib"]
       }
     }
   });
@@ -110,6 +110,9 @@ MIT
 see ```grunt-file2head/LICENSE-MIT```
 
 ##Historty
+
+### v0.0.5
+1 add clear tasks
 
 ### v0.0.4
 1. replace jsdom with cheerio

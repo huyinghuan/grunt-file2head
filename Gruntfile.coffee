@@ -22,8 +22,8 @@ module.exports = (grunt)->
           tag: 'body'
         css:
           src: ['*/*.css']
-        "clear-js":
-          clear: true
+        clear:
+          tasks: ["js", "css"]
   )
   grunt.loadTasks 'tasks'
   grunt.registerTask 'default', ['klyg_file2head:js', 'klyg_file2head:css']
