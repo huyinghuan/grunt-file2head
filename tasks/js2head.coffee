@@ -1,6 +1,7 @@
 _utils = require './lib/utils'
 _path = require 'path'
 _Clear = require './lib/clear'
+
 module.exports = (grunt)->
   grunt.registerMultiTask 'file2head',
       'find js file and add to tag header',
@@ -17,8 +18,7 @@ module.exports = (grunt)->
         #目标任务
         taskName = @target
         #是否是清除任务 #后续完善
-        return new _Clear grunt, @data, defaultOptions if (taskName is 'clear') or (taskName.indexOf('clear-') is 0)
-        console.log 1
+        return new _Clear @data, defaultOptions if (taskName is 'clear') or (taskName.indexOf('clear-') is 0)
         kindOf = grunt.util.kindOf
         data = @data
         #获取目标文件
@@ -29,7 +29,6 @@ module.exports = (grunt)->
         return grunt.log.error 'dist fields is illegal' if (distType isnt 'string') and (distType isnt  'array')
         #获取目标文件
         dist = _utils.getFilePath scanDistFileDir, dist
-
         legalDist = []
 
         #判断目标文件是否存在
@@ -46,10 +45,8 @@ module.exports = (grunt)->
         scanSourceFileDir = if data.scanSourceFileDir is false then '' else (data.scanSourceFileDir or options.scanSourceFileDir)
         #判断源文件是否进行了设置
         return grunt.log.error "source file is null" if ((srcType isnt 'array') and (srcType isnt 'string')) or (src.length is 0)
-        #字符转数组。
-        src = [].concat src
-        legalSrc = []
-        legalSrc = legalSrc.concat(grunt.file.expand(_path.join(scanSourceFileDir, srcFilePath))) for srcFilePath in src
+        #通配符文件名转数组。
+        legalSrc = _utils.getMatchFiles scanSourceFileDir, src
 
         #资源css，js
         assets = []
@@ -64,7 +61,7 @@ module.exports = (grunt)->
         return grunt.log.error "#{tag} is not exists" if kindOf(tag) isnt 'string'
 
         for beAppendedDistFile in legalDist
-          $ = _utils.createHtml grunt.file.read beAppendedDistFile
+          $ = _utils.createHtml beAppendedDistFile
           #清空前一次生成的标签
           $(tag).find("[grunt-type='#{taskName}']").remove()
           dtag = $(tag)
@@ -74,4 +71,4 @@ module.exports = (grunt)->
           #添加资源
           dtag.append "#{assets}\n"
           #写入文件
-          grunt.file.write beAppendedDistFile, $.html().replace(/\n{2,}/g, '\n')
+          _utils.writeToHtml beAppendedDistFile, $

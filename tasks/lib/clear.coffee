@@ -1,42 +1,38 @@
 _path = require 'path'
 _utils = require './utils'
+grunt = require 'grunt'
 class Clear
-  constructor: (@grunt, @data, defaultOptions)->
+  constructor: (@data, defaultOptions)->
     @init(defaultOptions)
 
     @doClear()
 
   init: (defaultOptions)->
     #初始化config
-    @config = @grunt.config.get _utils.getPackageName()
+    @config = grunt.config.get _utils.getPackageName()
     #合并options设置
     @options = @extend defaultOptions, @config.options
 
+  #清除指定任务
   doClearTask: (taskName, task)->
-    grunt = @grunt
     tmpOptions = @extend {}, @options
     taskOptions = @extend tmpOptions, task
     scanSourceFileDir = taskOptions.scanSourceFileDir
-    dist = [].concat taskOptions.dist
-    legalDist = []
-    for distFilePath in dist
-      similarPath = _path.join(scanSourceFileDir, distFilePath)
-      legalDist = legalDist.concat grunt.file.expand similarPath
+    legalDist = _utils.getMatchFiles scanSourceFileDir, taskOptions.dist
 
     @doClearTag beRemovedTagDistFilePath, taskOptions.tag, taskName for beRemovedTagDistFilePath in legalDist
 
+  #清除标签
   doClearTag: (filePath, selector, taskName)->
-    grunt = @grunt
-    $ = _utils.createHtml grunt.file.read filePath
+    $ = _utils.createHtml filePath
     property = if taskName then "[grunt-type='#{taskName}']" else "[grunt-type]"
     $(selector).find(property).remove()
-    grunt.file.write filePath, $.html().replace(/\n{2,}/g, '\n')
+    _utils.writeToHtml filePath, $
 
   doClearFile: ->
 
   doClear: ->
     data = @data
-    grunt = @grunt
     #获取需要清除的任务
     tasks = data.tasks;
     tasksDataType =   grunt.util.kindOf(tasks)
