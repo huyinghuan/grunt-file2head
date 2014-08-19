@@ -33,3 +33,6 @@ Utils.getFilePath = (root, dist)->
   return dist if typeof root isnt 'string'
   dist[index] = _path.join root, value for value, index in dist
   return dist
+
+Utils.getPackageName = ->
+  return 'file2head'

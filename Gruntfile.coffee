@@ -10,7 +10,7 @@
 module.exports = (grunt)->
   grunt.initConfig(
       pkg: grunt.file.readJSON "package.json"
-      klyg_file2head:
+      file2head:
         options:
           scanSourceFileDir: 'app'
           scanDistFileDir: 'app'
@@ -26,5 +26,5 @@ module.exports = (grunt)->
           tasks: ["js", "css"]
   )
   grunt.loadTasks 'tasks'
-  grunt.registerTask 'default', ['klyg_file2head:js', 'klyg_file2head:css']
+  grunt.registerTask 'default', ['file2head:js', 'file2head:css']
 

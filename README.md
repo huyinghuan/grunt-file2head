@@ -38,7 +38,7 @@ watch the change of index.html after ```grunt```
 ```js
   grunt.initConfig({
     // Configuration to be run (and then tested).
-    "klyg_file2head": {
+    "file2head": {
       options: {
         /**
         * The html tag which the .js or .css will be added.

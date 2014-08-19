@@ -8,7 +8,7 @@ class Clear
 
   init: (defaultOptions)->
     #初始化config
-    @config = @grunt.config.get('klyg_file2head')
+    @config = @grunt.config.get _utils.getPackageName()
     #合并options设置
     @options = @extend defaultOptions, @config.options
 

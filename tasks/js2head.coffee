@@ -2,8 +2,7 @@ _utils = require './lib/utils'
 _path = require 'path'
 _Clear = require './lib/clear'
 module.exports = (grunt)->
-
-  grunt.registerMultiTask 'klyg_file2head',
+  grunt.registerMultiTask 'file2head',
       'find js file and add to tag header',
       ()->
         defaultOptions =
@@ -66,8 +65,8 @@ module.exports = (grunt)->
 
         for beAppendedDistFile in legalDist
           $ = _utils.createHtml grunt.file.read beAppendedDistFile
+          #清空前一次生成的标签
           $(tag).find("[grunt-type='#{taskName}']").remove()
-          #console.log $.html()
           dtag = $(tag)
           #如果选择器不存在，则继续下一个
           continue if dtag.length is 0
