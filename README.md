@@ -41,6 +41,11 @@ watch the change of index.html after ```grunt```
     "file2head": {
       options: {
         /**
+        *watch the file change
+        *the watch option will block grunt task run，so please push the file2head task in the end of task queue
+        */
+        "watch": true,
+        /**
         * The html tag which the .js or .css will be added.
         * String. Default: "head"
         * Support CSS seletor.(in the plugin use document.querySelector(tag) choose the dist tag)
