@@ -23,7 +23,10 @@ module.exports = (grunt)->
         css:
           src: ['*/*.css']
         clear:
-          tasks: ["js", "css"]
+          tasks: ['css']
+          src: ["*.html"],
+          dist: ['body script'],
+          scanSourceFileDir: 'app'
   )
   grunt.loadTasks 'tasks'
   grunt.registerTask 'default', ['file2head:js', 'file2head:css']

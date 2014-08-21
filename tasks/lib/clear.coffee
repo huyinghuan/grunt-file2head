@@ -21,6 +21,7 @@ class Clear
     legalDist = _utils.getMatchFiles scanSourceFileDir, taskOptions.dist
 
     @doClearTag beRemovedTagDistFilePath, taskOptions.tag, taskName for beRemovedTagDistFilePath in legalDist
+    grunt.log.writeln "clear task #{taskName}"
 
   #清除标签
   doClearTag: (filePath, selector, taskName)->
@@ -29,7 +30,16 @@ class Clear
     $(selector).find(property).remove()
     _utils.writeToHtml filePath, $
 
-  doClearFile: ->
+  doClearFile: (src, dist)->
+    dist = [].concat dist
+    $ = _utils.createHtml src
+
+    for selector in dist
+      $(selector).each(()->
+        $(@).remove()
+      )
+    _utils.writeToHtml src, $
+    grunt.log.writeln "clear file #{src}'s #{dist}"
 
   doClear: ->
     data = @data
@@ -39,7 +49,20 @@ class Clear
     return if (tasksDataType isnt 'array') and (tasksDataType isnt 'string')
     tasks = [].concat tasks
     @doClearTask task, @config[task] for task in tasks when task
-    @doClearFile()
+
+    #清空设置的文件
+    src = data.src
+    dist = data.dist
+
+
+    return if not src or not dist
+    #获取根文件夹
+    sourceRootDirector = data.scanSourceFileDir or @options.scanSourceFileDir
+    sourceRootDirector = '' if sourceRootDirector is false
+
+    src = _utils.getMatchFiles sourceRootDirector, src
+
+    @doClearFile source, dist for source in src
 
   extend: (son, father)->
     son[key] = value for key, value of father

@@ -18,7 +18,7 @@ module.exports = (grunt)->
         #目标任务
         taskName = @target
         #是否是清除任务 #后续完善
-        return new _Clear @data, defaultOptions if (taskName is 'clear') or (taskName.indexOf('clear-') is 0)
+        return new _Clear @data, defaultOptions if (taskName is 'clear') or (taskName.indexOf('clear') is 0)
         kindOf = grunt.util.kindOf
         data = @data
         #获取目标文件
