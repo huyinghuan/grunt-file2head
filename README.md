@@ -49,7 +49,7 @@ app
 
 #### 1. add ```.js``` or ```.css``` file to html
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     js:{
@@ -78,7 +78,7 @@ result: app/index.html
 
 #### 2. set the root directory
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     js:{
@@ -111,7 +111,7 @@ result: app/index.html
 
 the default tag is ```head```. you can set the tag by yourself
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     js:{
@@ -145,7 +145,7 @@ result: app/index.html
 
 you also can use the simple css selector ```tag```(but support is not complete)
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     js:{
@@ -184,7 +184,7 @@ result: app/index.html
 
 the defaule url is ```/```, you can set ```uri`` to control it  by yourself
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     js:{
@@ -203,7 +203,7 @@ grunt.initConfig({
 
 the setting in task will cover default options
 
-```
+```js
 grunt.initConfig({
   "file2head":{
     options:{
@@ -252,6 +252,7 @@ result: app/index.html
 
 ##### clear task by task name
 
+```js
 grunt.initConfig({
   "file2head":{
     options:{
@@ -322,6 +323,7 @@ the result  app/index.html change to
 
 ##### clear task by file name and selector
 
+```js
 grunt.initConfig({
   "file2head":{
     options:{
@@ -394,6 +396,7 @@ the result  app/index.html change to
 
 ##### you can use them at the some time
 
+```js
 grunt.initConfig({
   "file2head":{
     options:{
