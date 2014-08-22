@@ -109,7 +109,7 @@ result: app/index.html
 
 #### 3. set the tag where the file will be added
 
-the default tag is ```head```. you can set the tag by yourself
+the default tag is ```head```. you can set the tag by yourself.
 
 ```js
 grunt.initConfig({
@@ -534,94 +534,15 @@ result: app/index.html
 </html>
 ```
 
-### Grunt-config
-
-the example config see ```klyg-file2head/Gruntfile.coffee```
-
-```js
-  grunt.initConfig({
-    // Configuration to be run (and then tested).
-    "file2head": {
-      options: {
-        /**
-        * The html tag which the .js or .css will be added.
-        * String. Default: "head"
-        * Support CSS seletor.(in the plugin use document.querySelector(tag) choose the dist tag)
-        **/
-        "tag": "head",
-        /*
-        * the root uri
-        * String. Default: "/"
-        * can set like:  http://localhost/xxx/xx 
-        * the result is: http://localhost/xxx/xx/xx.js
-        */
-        "uri": "/"
-        /*
-        *  the html file path which the .js or .css will be added.
-        *  String or Boolean. Default: false
-        */
-        "dist": "index.html",
-        /*
-        * set the source file directory that need be scaled
-        * String or Boolean. Default: false
-        * eg.   scaleSourceFileDir: 'app', src:[js/*.js]
-        * the file *.js in app/js  will be found
-        */
-        "scanSourceFileDir": false,
-         /*
-          * set the dist file directory that need be scaled
-          * String or Boolean. Default: false
-          * eg.   scanDistFileDir: 'app', dist: 'index.html'
-          * the file app/index.html  will be as dist file
-          */
-         "scanDistFileDir": false,
-      },
-      /*
-      *task
-      */
-      "lib": { 
-         "src": ["app/js/lib/*.js"],
-         "dist": "app/index.html", //if it is undefine or false will use options.dist
-         "tag":"head", //if it is undefine or false will use options.tag
-         "uri": "http://localhost:3000", //if it is undefine or false will use options.root
-         "scanSourceFileDir": false, // it will replace options.scanSourceFileDir
-         "scanDistFileDir": false, //it will replace options.scanDistFileDir
-      },
-      /*
-      *task
-      */
-      "js": {
-        "src": ['app/*.js', 'app/*/*.js'],
-        "dist": "test/index.html",
-        'tag': 'body',
-      },
-      /**
-      * How to clear html tag?
-      * 1. clear task
-      *   a. set the task name be 'clear' or 'clearXXX'
-      *   b. set tasks be array that contain task name that you want clear
-      *     for example: tasks: ["js"]  will clear the tag that be 'js' task added
-      * 2. clear file
-      *   a. set the file name in src
-      *   b. set the tag css selector in dist.
-      *      like this: "#main", will select the tag that id is main and then remove it
-      * You can use one of them or  use them at the some time
-      */
-      "clear":{
-        "tasks": ["css"],
-        "src": ["*.html"],
-        "dist": ["body js"]
-
-      }
-    }
-  });
-```
 ## LICENSE
-MI
+MIT
 
 see ```grunt-file2head/LICENSE-MIT```
 
-## Historty
+## History
+### v0.0.8
+1. add file url parameters
+
 ### v0.0.7
 1. add clear file
 2. add example.
