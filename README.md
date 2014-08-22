@@ -1,5 +1,8 @@
-grunt-js2head
+grunt-file2head
 =============
+add css or js file to html tag.
+
+[![NPM](https://nodei.co/npm/klyg-file2head.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/klyg-file2head/)
 
 ## install
 
