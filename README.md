@@ -85,7 +85,7 @@ grunt.initConfig({
       src: ['lib/*.js', '*.js'],
       dist: ['index.html'],
       scanSourceFileDir: 'app',
-      scanDistFileDir: ''app'',
+      scanDistFileDir: 'app',
     }
   }
 })
@@ -118,7 +118,7 @@ grunt.initConfig({
       src: ['lib/*.js', '*.js'],
       dist: ['index.html'],
       scanSourceFileDir: 'app',
-      scanDistFileDir: ''app'',
+      scanDistFileDir: 'app',
       tag: "body"
     }
   }
@@ -152,7 +152,7 @@ grunt.initConfig({
       src: ['lib/*.js', '*.js'],
       dist: ['index.html'],
       scanSourceFileDir: 'app',
-      scanDistFileDir: ''app'',
+      scanDistFileDir: 'app',
       tag: "#hello"
     }
   }
@@ -182,7 +182,7 @@ result: app/index.html
 
 #### 4.set the js file url
 
-the defaule url is ```/```, you can set ```uri`` to control it  by yourself
+the defaule url is ```/```, you can set ```uri``` to control it  by yourself
 
 ```js
 grunt.initConfig({
@@ -191,7 +191,7 @@ grunt.initConfig({
       src: ['lib/*.js', '*.js'],
       dist: ['index.html'],
       scanSourceFileDir: 'app',
-      scanDistFileDir: ''app'',
+      scanDistFileDir: 'app',
       tag: "#hello",
       uri: "http://xxx.com"
     }
@@ -228,7 +228,7 @@ grunt.initConfig({
   "file2head":{
     options:{
         scanSourceFileDir: 'app',
-        scanDistFileDir: ''app'',
+        scanDistFileDir: 'app',
         dist: 'index.html',
         tag: "head",
         uri: "http://xxx.com"
@@ -277,7 +277,7 @@ grunt.initConfig({
   "file2head":{
     options:{
         scanSourceFileDir: 'app',
-        scanDistFileDir: ''app'',
+        scanDistFileDir: 'app',
         dist: 'index.html',
         tag: "head",
         uri: "http://xxx.com"
@@ -296,7 +296,7 @@ grunt.initConfig({
   }
 })
 ```
-after run "[file2head:js, file2head:css]"
+after run ```[file2head:js, file2head:css]```
 the result  app/index.html is
 
 ```html
@@ -320,7 +320,7 @@ the result  app/index.html is
 
 ```
 
-after run "[file2head:clear]"
+after run ```[file2head:clear]```
 the result  app/index.html change to
 
 ```html
@@ -348,7 +348,7 @@ grunt.initConfig({
   "file2head":{
     options:{
         scanSourceFileDir: 'app',
-        scanDistFileDir: ''app'',
+        scanDistFileDir: 'app',
         dist: 'index.html',
         tag: "head",
         uri: "http://xxx.com"
@@ -368,7 +368,7 @@ grunt.initConfig({
   }
 })
 ```
-after run "[file2head:js, file2head:css]"
+after run ```[file2head:js, file2head:css]```
 the result  app/index.html is
 
 ```html
@@ -392,7 +392,7 @@ the result  app/index.html is
 
 ```
 
-after run "[file2head:clear]"
+after run ```[file2head:clear]```
 the result  app/index.html change to
 
 ```html
@@ -421,7 +421,7 @@ grunt.initConfig({
   "file2head":{
     options:{
         scanSourceFileDir: 'app',
-        scanDistFileDir: ''app'',
+        scanDistFileDir: 'app',
         dist: 'index.html',
         tag: "head",
         uri: "http://xxx.com"
@@ -442,7 +442,7 @@ grunt.initConfig({
   }
 })
 ```
-after run "[file2head:js, file2head:css]"
+after run ```[file2head:js, file2head:css]```
 the result  app/index.html is
 
 ```html
@@ -466,7 +466,7 @@ the result  app/index.html is
 
 ```
 
-after run "[file2head:clear]"
+after run ```[file2head:clear]```
 the result  app/index.html change to
 
 ```html
@@ -494,7 +494,7 @@ grunt.initConfig({
   "file2head":{
     options:{
         scanSourceFileDir: 'app',
-        scanDistFileDir: ''app'',
+        scanDistFileDir: 'app',
         dist: 'index.html',
         tag: "head",
         uri: "http://xxx.com",
