@@ -7,6 +7,7 @@ module.exports = (grunt)->
       'find js file and add to tag header',
       ()->
         defaultOptions =
+          parameters: false,
           scanSourceFileDir: false,
           scanDistFileDir: false,
           dist: false,
@@ -53,7 +54,7 @@ module.exports = (grunt)->
         uri = if data.uri is false then '' else (data.uri or options.uri)
         for path in legalSrc
           path = path.replace("#{scanSourceFileDir}/", '')
-          assets.push _utils.createElement uri, path, taskName
+          assets.push _utils.createElement uri, path, taskName, options.parameters
 
         assets = assets.join('\n')
 

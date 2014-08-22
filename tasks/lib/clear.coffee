@@ -53,8 +53,6 @@ class Clear
     #清空设置的文件
     src = data.src
     dist = data.dist
-
-
     return if not src or not dist
     #获取根文件夹
     sourceRootDirector = data.scanSourceFileDir or @options.scanSourceFileDir

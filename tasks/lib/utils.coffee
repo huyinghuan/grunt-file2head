@@ -13,18 +13,20 @@ Utils.createHtml = (filePath)->
 
 #写入html
 Utils.writeToHtml = (filePath, $)->
-  grunt.file.write filePath, $.html().replace(/\n{2,}/g, '\n')
+  grunt.file.write filePath, $.html().replace(/(\n{2,})|(\s{1,}\n{1,})/g, '\n')
 
 
 ###
   @path: 源文件的路径。
   @target： 当前任务的名称，便于区别处理不同任务。
 ###
-Utils.createElement = (uri, path, target)->
+Utils.createElement = (uri, path, target, parameters)->
+  parameters =  parameters or ''
   uri = '' if kindOf(uri) isnt 'string'
   uri += '/' if uri.lastIndexOf('/') isnt (uri.length - 1)
   ext = _path.extname(path).replace(".", "");
   path = _url.resolve(uri, path);
+  path = "#{path}#{parameters}"
   console.log(path)
   dom = ''
   switch ext

@@ -199,6 +199,26 @@ grunt.initConfig({
 })
 ```
 
+result: app/index.html
+
+```html
+<html>
+...
+<head>
+...
+</head>
+<body>
+....
+<div id="hello">
+<script src="http://xxx.com/lib/lib.js" grunt-type="js"></script>
+<script src="http://xxx.com/a.js" grunt-type="js"></script>
+<script src="http://xxx.com/b.js" grunt-type="js"></script>
+</div>
+...
+</body>
+</html>
+```
+
 #### 5. set default options
 
 the setting in task will cover default options
@@ -463,6 +483,55 @@ the result  app/index.html change to
 </body>
 </html>
 
+```
+
+#### How add versions?
+
+the setting in task will cover default options
+
+```js
+grunt.initConfig({
+  "file2head":{
+    options:{
+        scanSourceFileDir: 'app',
+        scanDistFileDir: ''app'',
+        dist: 'index.html',
+        tag: "head",
+        uri: "http://xxx.com",
+        parameters:"?v=#P{new Date().getTime()-v0.1}"
+    },
+    js:{
+      src: ['lib/*.js', '*.js'],
+      tag: "#hello"
+    },
+    css:{
+      src: ['css/*.css']
+      uri: "http://www.com"
+    }
+  }
+})
+```
+
+result: app/index.html
+
+```html
+<html>
+...
+<head>
+...
+<link rel="stylesheet" href="http://www.com/css/a.css?v=1408670965087-v1.0" grunt-type="css">
+<link rel="stylesheet" href="http://www.com/css/c.css?v=1408670965087-v1.0" grunt-type="css">
+</head>
+<body>
+....
+<div id="hello">
+<script src="http://xxx.com/lib/lib.js?v=1408670965087-v1.0" grunt-type="js"></script>
+<script src="http://xxx.com/a.js?v=1408670965087-v1.0" grunt-type="js"></script>
+<script src="http://xxx.com/b.js?v=1408670965087-v1.0" grunt-type="js"></script>
+</div>
+...
+</body>
+</html>
 ```
 
 ### Grunt-config

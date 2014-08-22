@@ -12,6 +12,7 @@ module.exports = (grunt)->
       pkg: grunt.file.readJSON "package.json"
       file2head:
         options:
+          parameters: "?v=#{new Date().getTime()}-v1.0"
           scanSourceFileDir: 'app'
           scanDistFileDir: 'app'
           tag: "head"
