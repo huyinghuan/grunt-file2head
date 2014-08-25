@@ -273,6 +273,9 @@ result: app/index.html
 
 #### 6. how to clear tag
 
+this plugin will do clean tasks that name with ```clear``` or begin with ```clear```. like ```clear```, ```clearHead``` and so on.
+
+
 ##### clear task by task name
 
 ```js
@@ -488,9 +491,9 @@ the result  app/index.html change to
 
 ```
 
-#### How add versions?
+#### How to add versions?
 
-the setting in task will cover default options
+set versions infomation by fields ```parameters```
 
 ```js
 grunt.initConfig({
@@ -551,7 +554,7 @@ see ```grunt-file2head/LICENSE-MIT```
 2. add example.
 
 ### v0.0.6
-1. rename task name frome ```klyg-file2heead``` to ```file2head```
+1. rename task name frome ```klyg-file2head``` to ```file2head```
 
 ### v0.0.5
 1. add clear tasks
